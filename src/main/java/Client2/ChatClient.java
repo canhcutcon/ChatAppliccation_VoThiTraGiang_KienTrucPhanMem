@@ -1,4 +1,4 @@
-package Client;
+package Client2;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -49,9 +49,10 @@ public class ChatClient {
 
 	public ChatClient(String name) throws Exception {
 		this.name = name;
-//		// thiết lập môi trường cho JMS
+		
+//		// thiết lập môi trư�?ng cho JMS
 //		BasicConfigurator.configure();
-//		// thiết lập môi trường cho JJNDI
+//		// thiết lập môi trư�?ng cho JJNDI
 //		settings = new Properties();
 //		settings.setProperty(Context.INITIAL_CONTEXT_FACTORY, "org.apache.activemq.jndi.ActiveMQInitialContextFactory");
 //		settings.setProperty(Context.PROVIDER_URL, "tcp://localhost:61616");
@@ -68,7 +69,7 @@ public class ChatClient {
 //		// tạo session
 //		final Session session = con.createSession(/* transaction */false, /* ACK */Session.CLIENT_ACKNOWLEDGE);
 //		// tạo consumer
-
+		
 		String fontfamily = "Arial, sans-serif";
 		Font font = new Font(fontfamily, Font.PLAIN, 15);
 
@@ -109,6 +110,27 @@ public class ChatClient {
 
 		// button send
 		final JButton jsbtn = new JButton("Send");
+		
+		final JButton buttonClient = new JButton("Clien");
+		buttonClient.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				try {
+					ChatClient window;
+					try {
+						window = new ChatClient("abmin2");
+						window.jfr.setVisible(true);
+						window.jfr.setLocationRelativeTo(null);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+		});
 		jsbtn.setFont(font);
 		jsbtn.setBounds(575, 410, 100, 35);
 		// Connection view
@@ -129,6 +151,7 @@ public class ChatClient {
 					jfr.remove(jsbtn);
 					jfr.remove(jtextInputChatSP);
 					jfr.remove(jsbtndeco);
+					jfr.remove(buttonClient);
 					jfr.revalidate();
 					jfr.repaint();
 					jtextListUsers.setText(null);
@@ -163,6 +186,8 @@ public class ChatClient {
 
 			}
 		});
+		
+		
 
 		jcbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
@@ -204,6 +229,7 @@ public class ChatClient {
 						jfr.add(jsbtn);
 						jfr.add(jtextInputChatSP);
 						jfr.add(jsbtndeco);
+						jfr.add(buttonClient);
 						jfr.revalidate();
 						jfr.repaint();
 						jtextFilDiscu.setBackground(Color.WHITE);
@@ -225,7 +251,8 @@ public class ChatClient {
 		jtfName.setBounds(375, 380, 135, 40);
 		jtfport.setBounds(200, 380, 135, 40);
 		jcbtn.setBounds(575, 380, 100, 40);
-
+		buttonClient.setBounds(575, 380, 100, 40);
+		
 		jtextFilDiscu.setBackground(Color.LIGHT_GRAY);
 		jtextListUsers.setBackground(Color.LIGHT_GRAY);
 
